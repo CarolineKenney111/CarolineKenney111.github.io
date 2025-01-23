@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #3efff5, #f3ff8c);
+    background: linear-gradient(135deg, #47f8ec, #fe7bd9);
     color: #333;
     text-align: center;
     margin: 0;
@@ -71,7 +71,7 @@ body {
   
   /* Button Styles */
   .submit {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #47f8ec, #fe7bd9);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -82,5 +82,5 @@ body {
   }
   
   .submit:hover {
-    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    background: linear-gradient(135deg, #47f8ec, #fe7bd9);
   }  
