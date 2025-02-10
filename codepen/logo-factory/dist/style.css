@@ -17,29 +17,29 @@ body {
   background: var(--c2);
   font-family: monospace;
   --c1: #1e1e1e;
-  --c2: #c1c1c1;
-  --c3: #ce5121;
+  --c2: #1ac779;
+  --c3: #4921ce;
 }
 
 body:has(.theme-options > .option-1.active),
 .theme-options > .option-1 {
   --c1: #1e1e1e;
-  --c2: #c1c1c1;
-  --c3: #ce5121;
+  --c2: #7591ef;
+  --c3: #ce21c3;
 }
 
 body:has(.theme-options > .option-2.active),
 .theme-options > .option-2 {
-  --c1: #0e0e0e;
-  --c2: #777;
-  --c3: #05e284;
+  --c1: #2fe775;
+  --c2: #4f1242;
+  --c3: #c5f42e;
 }
 
 body:has(.theme-options > .option-3.active),
 .theme-options > .option-3 {
-  --c1: #e85a23;
-  --c2: #313131;
-  --c3: #40efff;
+  --c1: #f9ff7e;
+  --c2: #de3b3b;
+  --c3: #2e17c3;
 }
 
 body::after {
