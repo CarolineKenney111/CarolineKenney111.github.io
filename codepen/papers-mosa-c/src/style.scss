@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Homemade+Apple&family=Noto+Sans+KR:wght@100..900&family=Oooh+Baby&family=Reenie+Beanie&display=swap');
+
+@mixin keyframes($name) {
+ @-webkit-keyframes #{$name} {
+  @content;
+ }
+ @-moz-keyframes #{$name} {
+  @content;
+ }
+ @-ms-keyframes #{$name} {
+  @content;
+ }
+ @keyframes #{$name} {
+  @content;
+ }
+}
+
+@mixin animation(
+ $delay,
+ $duration,
+ $animation,
+ $timing: linear,
+ $direction: forward,
+ $fillmode: forwards
+) {
+ animation-delay: $delay;
+ animation-duration: $duration;
+ animation-name: $animation;
+ animation-timing-function: $timing;
+ animation-fill-mode: $fillmode;
+ animation-direction: $direction;
+}
+
+body {
+ width: 110vw;
+ height: 110vh;
+ padding: 0;
+ margin: -5vh auto auto -5vw;
+ position: relative;
+ overflow: hidden;
+ background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkMWEzYiIvPjxzdG9wIG9mZnNldD0iMzMuMzMzMzMlIiBzdG9wLWNvbG9yPSIjZjc5NDFkIi8+PHN0b3Agb2Zmc2V0PSI2Ni42NjY2NyUiIHN0b3AtY29sb3I9IiMwMGE1OTkiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwN2FhYzYiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=");
+ background-size: 100%;
+ background-image: linear-gradient(
+  to right,
+  hsl(335.5, 85.4%, 51.6%),
+  hsl(305.8, 93.2%, 64.1%),
+  hsl(55.5, 100%, 47.5%),
+  hsl(173.7, 93.2%, 40.2%)
+ );
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='hsl(335.5,85.4%,51.6%)', endColorstr='hsl(173.7,93.2%,40.2%)', GradientType=1);
+ mix-blend-mode: multiply, hard-light;
+}
+
+/* Colors and push to right */
+/* Multiple $i x 0.1 */
+$colors: hsla(282.9, 53.6%, 47.3%, 0.8), hsla(172.1, 65.6%, 57.8%, 0.8),
+ hsla(4.2, 99.1%, 57.8%, 0.6), hsla(53.7, 87.7%, 45.5%, 0.6),
+ hsla(189.6, 60.4%, 34.5%, 0.8), hsla(235.3, 28.8%, 43.5%, 0.8),
+ rgba(25, 55, 55, 0.41);
+
+div {
+ width: 4em;
+ height: 4em;
+ padding-left: -1em;
+ padding-top: -1em;
+ margin-left: 1em;
+ margin-top: -1em;
+ float: left;
+}
+
+$n: 600;
+div {
+ mix-blend-mode: xor;
+ @for $i from 1 through $n {
+  &:nth-child(#{$i}) {
+   border-top: 1px hsla(18, 50%, 30%, 1) solid;
+   border-left: 1px hsla(130, 70%, 30%, 1) solid;
+   border-right: 1px hsla(335, 50%, 40%, 1) solid;
+   border-bottom: 1px hsla(175, 50%, 30%, 1) solid;
+   background: nth($colors, $i%5 + 3);
+   @include animation($i * 0.01s, 0.75s, animation-rotate, linear);
+   animation-iteration-count: infinite;
+  }
+ }
+}
+
+// Fade-in
+@include keyframes(animation-rotate) {
+ 0% {
+  transform: rotate(0deg);
+  filter: url(#glitch);
+  mix-blend-mode: color-burn;
+  z-index: 2;
+ }
+
+ 100% {
+  transform: rotate(90deg);
+  filter: brightness(1.5) contrast(3);
+  mix-blend-mode: multiply;
+  z-index: -2;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/194946/wavecut.png);
+ }
+}
+
+///////
+
+:root {
+ --hue: 330; /* Bascolor */
+}
+
+#wall {
+ width: 100%;
+ height: 100vh;
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: -10;
+ display: grid;
+ grid-template-columns: repeat(31, 1fr);
+ grid-gap: 0;
+ margin: 0;
+}
+
+p {
+ font-size: 3.5em;
+ line-height: 3.4rem;
+ letter-spacing: -1rem;
+ font-family: "Charmonman", cursive;
+ font-weight: 400;
+ font-style: normal;
+ color: rgba(0, 0, 0, 0);
+ mix-blend-mode: hard-light;
+}
+
+span {
+ opacity: 0;
+ text-align: center;
+ color: hsl(var(--hue), 100%, 90%);
+}
+
+.oddWord {
+ &:before{
+  content:" ";
+ }
+ animation: torn 1.75s linear alternate 20 forwards;
+}
+
+.evenWord {
+ animation: turn .75s linear 10 backwards;
+}
+
+@keyframes turn {
+ 0% {
+  transform: rotate(0deg);
+  filter: url(#glitch);
+  filter: brightness(1) contrast(1); 
+  color: rgba(255,255,255,0.5);
+  z-index: 2;
+ }
+
+ 100% {
+  transform: rotate(360deg);
+  filter: brightness(1.5) contrast(2); 
+  color: rgba(0,0,0,0.2);
+  z-index: -2;
+ }
+}
+
+@keyframes torn {
+ to {
+  color: tomato;
+  font-weight: 700;
+ }
+}

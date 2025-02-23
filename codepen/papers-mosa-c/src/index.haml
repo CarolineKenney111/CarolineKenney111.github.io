@@ -1,0 +1,11 @@
+%body
+- for i in 0...600 do
+  %div
+#trembling
+  %svg(version="1.1" xmlns="http://www.w3.org/2000/svg")
+    %defs  
+      %filter#glitch
+        %feturbulence#turb(basefrequency="0.05 0.01" numoctaves="2" result="warp" type="fractalNoise")
+        %animate(attributename="values" attributetype="XML" dur="5s" repeatcount="indefinite" values="0;180;360")
+        %fedisplacementmap(in="SourceGraphic" in2="huedturb" scale="10" xchannelselector="R" ychannelselector="G")
+        
