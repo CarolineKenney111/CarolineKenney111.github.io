@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: yellowgreen;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+nav {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: red;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+nav a {
+    width: 10vw;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: yellow;
+}
+
+/* Main Sour Patch Kids Image - Uses Transition */
+img {
+    width: 40vw;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Add hover effect for transition */
+img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Plushie Image - Uses Animation */
+#plushie {
+    width: 30vw;
+    height: auto;
+    margin-top: 20px;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Keyframes for plushie animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
