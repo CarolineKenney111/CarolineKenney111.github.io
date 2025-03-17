@@ -1,0 +1,206 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+
+.band-image {
+    display: block;
+    max-width: 30%;  /* Adjust size to fit well */
+    margin: 10px auto;  /* Centers the image */
+    border-radius: 8px;  /* Optional: Slightly rounded corners */
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.8); /* Optional: Glow effect */
+}
+
+
+/* Global Styles */
+body {
+    background-color: #0d0d0d;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Futuristic Font for Home/Grid Page */
+.home-page {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Readable Serif Font for Concert Details */
+.concert-details {
+    font-family: 'Times New Roman', serif;
+    max-width: 90%;
+    margin: auto;
+    text-align: left;
+    line-height: 1.6;
+    padding: 20px;
+    word-wrap: break-word;
+}
+
+/* Ensure Text Stays Within the Screen */
+.concert-details h2,
+.concert-details p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+/* Header */
+header {
+    padding: 30px;
+    background-color: #222;
+    border-bottom: 3px solid #ff6b6b;
+}
+
+/* Larger title and subtitle */
+h1 {
+    font-size: rem;
+    color: #feca57;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 1.4rem;
+    color: #ddd;
+    margin-top: 10px;
+}
+
+/* Concert Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Concert Tile */
+.concert-tile {
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: white;
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border-left: 5px solid #ff6b6b;  /* Adds red border to the left */
+}
+
+/* Center the title */
+.concert-tile h2 {
+    font-size: 1.6rem;
+    color: white;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    width: 80%;
+}
+
+/* Hide title & show image on hover */
+.concert-tile .hover-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Hover effect - Hide text & show image */
+.concert-tile:hover h2 {
+    opacity: 0;
+}
+
+.concert-tile:hover .hover-image {
+    opacity: 1;
+}
+
+/* Cool glowing effect on hover */
+.concert-tile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.8);
+}
+
+/* Full Concert Details - Fix to Cover Entire Screen */
+.concert-details {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding: 40px;
+    overflow-y: auto;
+    z-index: 9999; /* Ensure it stays above everything */
+}
+
+/* Ensure Concert Details are displayed when targeted */
+.concert-details:target {
+    display: block;
+}
+
+/* Fixed Close Button - Now Covers Full Modal */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.8rem;
+    text-decoration: none;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;  /* Ensures it's always visible */
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 16px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.8; /* Slight transparency */
+    transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+/* Hover Effect */
+#back-to-top:hover {
+    background-color: #d43f3f;
+    opacity: 1;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    #back-to-top {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 14px;
+        font-size: 1rem;
+    }
+}
+
+
+    .concert-details {
+        max-width: 95%;
+        padding: 15px;
+    }
