@@ -52,7 +52,7 @@ header {
 
 /* Larger title and subtitle */
 h1 {
-    font-size: rem;
+    font-size: 3.5rem;
     color: #feca57;
     text-transform: uppercase;
     letter-spacing: 2px;
