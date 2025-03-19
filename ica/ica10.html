@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA 10</title>
+    <style>
+        .circle {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            border: 3px solid red;
+            border-radius: 50%; /* Makes it a circle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="name">Hello!</h1>
+    <button>Click me!</button>
+    <div class="circle">Click Me</div>
+
+    <script>
+        let circle = document.querySelector('.circle');
+        circle.addEventListener('click', changeColor);
+
+        console.log('Hello World!');
+        
+        let btn = document.querySelector('button');
+        btn.addEventListener('click', updateName);
+
+        function updateName() {
+            console.log('Test');
+            let name = document.querySelector('.name');
+            const input = prompt("Enter a new name!");
+            if (input) {
+                name.textContent = input;
+            }
+        }
+
+        function randomColor() {
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function changeColor() {
+            let newColor = randomColor();
+            circle.style.backgroundColor = newColor;
+            circle.style.border = "5px dashed black"; // Differentiate it from your professor’s code
+        }
+    </script>
+
+</body>
+</html>
