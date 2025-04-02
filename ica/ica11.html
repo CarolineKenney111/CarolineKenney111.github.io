@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ICA 11 - Function Action</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Web Page</h1>
+  <p>Click the button to change the background color:</p>
+  <button onclick="changeBackgroundColor()">Change Color</button>
+
+  <script>
+    function changeBackgroundColor() {
+      const colors = ["lightblue", "lightgreen", "lavender", "peachpuff", "lightcoral"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    }
+  </script>
+</body>
+</html>
