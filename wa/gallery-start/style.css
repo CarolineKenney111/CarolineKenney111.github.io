@@ -1,0 +1,83 @@
+/* Apply Times New Roman to the whole site */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Center and style the heading */
+h1 {
+  text-align: center;
+}
+
+/* Container for the main image */
+.full-img {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
+
+/* Main image display */
+.displayed-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Dark overlay (controlled by button) */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Overlay toggle button */
+button {
+  border: 0;
+  background: rgba(150,150,150,0.6);
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #999;
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+  left: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Thumbnails area */
+.thumb-bar {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Thumbnail image styling */
+.thumb-bar img {
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+/* Zoom-in on hover for thumbnails */
+.thumb-bar img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
