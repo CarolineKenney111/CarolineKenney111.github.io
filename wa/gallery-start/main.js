@@ -3,19 +3,26 @@ const thumbBar = document.querySelector('.thumb-bar');
 const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 
-/* Updated image filenames */
-const imageFiles = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg'];
+/* Image filenames */
+const imageFiles = [
+  'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg',
+  'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg'
+];
 
-/* Your custom alt text */
+/* Alt text for each image */
 const altText = {
   'img1.jpg': 'Skiing in the mountains',
   'img2.jpg': 'Sunset by the dock',
-  'img3.jpg': 'Dinner with parents',
+  'img3.jpg': 'Girls goofing around downtown',
   'img4.jpg': 'Girls in colorful dresses',
-  'img5.jpg': 'Family hug at a bar'
+  'img5.jpg': 'Family hug at a bar',
+  'img6.jpg': 'Group posing with polar bear sculpture',
+  'img7.jpg': 'Friends laughing in the street at sunset',
+  'img8.jpg': 'Snowy field with horses and people',
+  'img9.jpg': 'Three girls in cowboy hats smiling'
 };
 
-/* Create and insert thumbnails */
+/* Create and add thumbnails */
 for (let i = 0; i < imageFiles.length; i++) {
   const newImage = document.createElement('img');
   newImage.setAttribute('src', `images/${imageFiles[i]}`);
@@ -28,7 +35,7 @@ for (let i = 0; i < imageFiles.length; i++) {
   });
 }
 
-/* Toggle dark/light overlay */
+/* Toggle the overlay */
 btn.addEventListener('click', function () {
   const className = btn.getAttribute('class');
   if (className === 'dark') {

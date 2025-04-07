@@ -1,14 +1,19 @@
-/* Apply Times New Roman to the whole site */
+/* Global styles */
 body {
   font-family: 'Times New Roman', Times, serif;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #ffe6f0; /* light pink background */
+  color: #b30059; /* dark pink text */
+  font-size: 18px; /* slightly larger text */
 }
 
-/* Center and style the heading */
+/* Page heading */
 h1 {
   text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
 }
 
 /* Container for the main image */
@@ -27,9 +32,10 @@ h1 {
   display: block;
   border-radius: 10px;
   object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark overlay (controlled by button) */
+/* Overlay effect (changes with button click) */
 .overlay {
   position: absolute;
   top: 0;
@@ -41,23 +47,28 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-/* Overlay toggle button */
+/* Darken/Lighten button */
 button {
-  border: 0;
-  background: rgba(150,150,150,0.6);
-  text-shadow: 1px 1px 1px white;
-  border: 1px solid #999;
+  border: none;
+  background: #ff99cc; /* soft pink */
+  color: #b30059; /* dark pink text */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 6px;
   position: absolute;
   cursor: pointer;
   top: 10px;
   left: 10px;
-  padding: 8px 12px;
-  font-size: 14px;
-  border-radius: 6px;
-  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
 }
 
-/* Thumbnails area */
+button:hover {
+  background: #ff66b2;
+}
+
+/* Thumbnails section */
 .thumb-bar {
   margin-top: 20px;
   display: flex;
@@ -66,7 +77,7 @@ button {
   justify-content: center;
 }
 
-/* Thumbnail image styling */
+/* Thumbnail image styles */
 .thumb-bar img {
   width: 120px;
   height: auto;
@@ -74,10 +85,10 @@ button {
   cursor: pointer;
   border-radius: 6px;
   transition: transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Zoom-in on hover for thumbnails */
 .thumb-bar img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
