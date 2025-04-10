@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./wa12.css" />
+  <title>Guess the Dog Breed</title>
+</head>
+<body>
+  <div class="app">
+    <header>🐾 Guess the Dog Breed</header>
+
+    <section class="dog-display">
+      <img id="dog-image" class="dog-img" src="" alt="A cute dog" />
+      <div id="dog-answer" class="dog-answer hidden"></div>
+    </section>
+
+    <div id="spinner" class="spinner hidden"></div>
+
+    <section class="controls">
+      <button id="js-new-dog" class="button">New Dog</button>
+      <button id="js-show-answer" class="button">Reveal Breed</button>
+      <input type="text" id="breed-input" class="input" placeholder="Type your guess..." />
+      <button id="js-guess-breed" class="button">Guess Breed</button>
+      <p id="guess-result" class="guess-result"></p>
+    </section>
+
+    <section class="explanation">
+        <p>
+          I extended the original quote machine into a fun and interactive dog breed guessing game using the <a href="https://dog.ceo/dog-api/" target="_blank">Dog CEO API</a>. The app displays a random image of a dog, and the user has to guess its breed by typing into an input box. When the user clicks "Guess Breed," the app provides instant feedback — letting them know if they got it right or showing the correct breed if they didn’t. I added image loading, user input, real-time validation, and a reveal feature to make it engaging and educational!
+        </p>
+      </section>
+      
+  </div>
+
+  <script src="./wa12.js"></script>
+</body>
+</html>
