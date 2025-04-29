@@ -71,7 +71,56 @@ h1 {
     position: relative;
 }
 
-/* Shake animation */
+/* Final Submit (Submit Phone Number) Button */
+#finalSubmit {
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Prize Area */
+#dogPrize {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Dog Image */
+#dogPrize img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Fade in animation for dog */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* New Dog Button */
+#newDogButton {
+    margin-top: 15px;
+    font-size: 16px;
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Shake animation for wrong answers */
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }

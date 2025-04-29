@@ -4,6 +4,8 @@ const mathProblemDiv = document.getElementById('mathProblem');
 const answerInput = document.getElementById('answerInput');
 const submitAnswer = document.getElementById('submitAnswer');
 const backspaceBtn = document.getElementById('backspaceButton');
+const finalSubmit = document.getElementById('finalSubmit');
+const dogPrize = document.getElementById('dogPrize');
 
 let currentUnlockNumber = null;
 let correctAnswer = null;
@@ -11,14 +13,13 @@ let changeProblemTimer;
 
 // Generate a random math problem
 function generateMathProblem() {
-    clearTimeout(changeProblemTimer); // clear old timer
+    clearTimeout(changeProblemTimer);
 
     const a = Math.floor(Math.random() * 9) + 1;
     const b = Math.floor(Math.random() * 9) + 1;
     correctAnswer = a + b;
     mathProblemDiv.innerText = `What is ${a} + ${b}? (Unlock a number)`;
 
-    // If no answer within 3 seconds, change the math problem
     changeProblemTimer = setTimeout(() => {
         if (answerInput.value === '') {
             generateMathProblem();
@@ -56,7 +57,6 @@ keys.forEach(key => {
             if (current.length < 10) {
                 current += key.dataset.number;
 
-                // Format with dashes
                 let formatted = '';
                 for (let i = 0; i < current.length; i++) {
                     if (i === 3 || i === 6) {
@@ -66,12 +66,16 @@ keys.forEach(key => {
                 }
 
                 phoneDisplay.innerText = formatted;
+
+                if (current.length === 10) {
+                    finalSubmit.style.display = 'inline-block';
+                }
             }
         }
     });
 });
 
-// Handle Delete button (backspace) and move it randomly
+// Handle delete button and move it randomly
 backspaceBtn.addEventListener('click', () => {
     let current = phoneDisplay.innerText.replaceAll('-', '');
 
@@ -87,15 +91,15 @@ backspaceBtn.addEventListener('click', () => {
         }
 
         phoneDisplay.innerText = formatted;
+        finalSubmit.style.display = 'none'; // Hide submit if they delete
     }
 
-    // Move Delete button to random position
     backspaceBtn.style.position = 'absolute';
     backspaceBtn.style.top = Math.floor(Math.random() * 80 + 10) + 'vh';
     backspaceBtn.style.left = Math.floor(Math.random() * 80 + 10) + 'vw';
 });
 
-// When user submits answer
+// Handle submitAnswer button
 submitAnswer.addEventListener('click', () => {
     if (parseInt(answerInput.value) === correctAnswer) {
         currentUnlockNumber = getRandomLockedNumber();
@@ -105,7 +109,6 @@ submitAnswer.addEventListener('click', () => {
         answerInput.value = '';
         generateMathProblem();
     } else {
-        // Shake screen and flash red background
         document.body.classList.add('shake');
         document.body.style.backgroundColor = '#ff4c4c';
 
@@ -119,5 +122,45 @@ submitAnswer.addEventListener('click', () => {
     }
 });
 
-// Start the first math problem
+// Handle final submit (phone number complete)
+finalSubmit.addEventListener('click', () => {
+    dogPrize.innerHTML = `<h2>Congratulations on completing your number! I hope my project frustrated you! <br>Your prize is a picture of a cute dog:</h2>`;
+
+    fetchDog();
+
+    finalSubmit.style.display = 'none';
+});
+
+// Fetch a dog and set up "New Dog" button
+function fetchDog() {
+    fetch('https://dog.ceo/api/breeds/image/random')
+        .then(response => response.json())
+        .then(data => {
+            // Set the dog image
+            dogPrize.innerHTML += `<img id="dogImage" src="${data.message}" alt="Cute Dog">`;
+
+            // If "New Dog" button doesn't exist yet, create it
+            if (!document.getElementById('newDogButton')) {
+                const newDogButton = document.createElement('button');
+                newDogButton.id = 'newDogButton';
+                newDogButton.textContent = 'New Dog';
+                dogPrize.appendChild(newDogButton);
+
+                newDogButton.addEventListener('click', () => {
+                    fetch('https://dog.ceo/api/breeds/image/random')
+                        .then(response => response.json())
+                        .then(data => {
+                            const dogImage = document.getElementById('dogImage');
+                            dogImage.src = data.message;
+                        });
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching dog image:', error);
+            dogPrize.innerHTML += `<p>Sorry, no dog right now 😢</p>`;
+        });
+}
+
+// Start everything
 generateMathProblem();
