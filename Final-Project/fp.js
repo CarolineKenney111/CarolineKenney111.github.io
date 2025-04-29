@@ -6,6 +6,7 @@ const submitAnswer = document.getElementById('submitAnswer');
 const backspaceBtn = document.getElementById('backspaceButton');
 const finalSubmit = document.getElementById('finalSubmit');
 const dogPrize = document.getElementById('dogPrize');
+const interactionArea = document.getElementById('interactionArea');
 
 let currentUnlockNumber = null;
 let correctAnswer = null;
@@ -18,7 +19,11 @@ function generateMathProblem() {
     const a = Math.floor(Math.random() * 9) + 1;
     const b = Math.floor(Math.random() * 9) + 1;
     correctAnswer = a + b;
+
     mathProblemDiv.innerText = `What is ${a} + ${b}? (Unlock a number)`;
+    answerInput.style.display = 'inline-block';
+    submitAnswer.style.display = 'inline-block';
+    backspaceBtn.style.display = 'inline-block';
 
     changeProblemTimer = setTimeout(() => {
         if (answerInput.value === '') {
@@ -91,7 +96,7 @@ backspaceBtn.addEventListener('click', () => {
         }
 
         phoneDisplay.innerText = formatted;
-        finalSubmit.style.display = 'none'; // Hide submit if they delete
+        finalSubmit.style.display = 'none';
     }
 
     backspaceBtn.style.position = 'absolute';
@@ -99,7 +104,7 @@ backspaceBtn.addEventListener('click', () => {
     backspaceBtn.style.left = Math.floor(Math.random() * 80 + 10) + 'vw';
 });
 
-// Handle submitAnswer button
+// Handle math problem submission
 submitAnswer.addEventListener('click', () => {
     if (parseInt(answerInput.value) === correctAnswer) {
         currentUnlockNumber = getRandomLockedNumber();
@@ -122,45 +127,63 @@ submitAnswer.addEventListener('click', () => {
     }
 });
 
-// Handle final submit (phone number complete)
+// Handle phone number submission
 finalSubmit.addEventListener('click', () => {
-    dogPrize.innerHTML = `<h2>Congratulations on completing your number! I hope my project frustrated you! <br>Your prize is a picture of a cute dog:</h2>`;
+    // Hides everything except the dogPrize section
+    interactionArea.style.display = 'none';
 
-    fetchDog();
+    // Show dog prize message
+    dogPrize.innerHTML = `
+        <h2>Congratulations on completing your number! I hope my project frustrated you! <br>
+        Your prize is a picture of a cute dog:</h2>
+    `;
 
-    finalSubmit.style.display = 'none';
-});
-
-// Fetch a dog and set up "New Dog" button
-function fetchDog() {
+    // Load the dog image
     fetch('https://dog.ceo/api/breeds/image/random')
         .then(response => response.json())
         .then(data => {
-            // Set the dog image
-            dogPrize.innerHTML += `<img id="dogImage" src="${data.message}" alt="Cute Dog">`;
+            const dogImg = document.createElement('img');
+            dogImg.id = 'dogImage';
+            dogImg.src = data.message;
+            dogImg.alt = 'Cute Dog';
+            dogPrize.appendChild(dogImg);
 
-            // If "New Dog" button doesn't exist yet, create it
-            if (!document.getElementById('newDogButton')) {
-                const newDogButton = document.createElement('button');
-                newDogButton.id = 'newDogButton';
-                newDogButton.textContent = 'New Dog';
-                dogPrize.appendChild(newDogButton);
+    // Create a restart button
+const restartBtn = document.createElement('button');
+restartBtn.textContent = 'Start Over to Earn a New Dog';
+restartBtn.id = 'restartBtn';
+restartBtn.style.marginTop = '20px';
+restartBtn.style.fontSize = '16px';
+restartBtn.style.padding = '8px 16px';
+restartBtn.style.backgroundColor = '#f44336';
+restartBtn.style.color = 'white';
+restartBtn.style.border = 'none';
+restartBtn.style.borderRadius = '8px';
+restartBtn.style.cursor = 'pointer';
 
-                newDogButton.addEventListener('click', () => {
-                    fetch('https://dog.ceo/api/breeds/image/random')
-                        .then(response => response.json())
-                        .then(data => {
-                            const dogImage = document.getElementById('dogImage');
-                            dogImage.src = data.message;
-                        });
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching dog image:', error);
-            dogPrize.innerHTML += `<p>Sorry, no dog right now 😢</p>`;
+dogPrize.appendChild(restartBtn);
+
+// Restart logic
+restartBtn.addEventListener('click', () => {
+    // Clear everything
+    dogPrize.innerHTML = '';
+    phoneDisplay.innerText = '';
+    
+    keys.forEach(key => {
+        key.disabled = true;
+        key.classList.remove('enabled');
+    });
+
+    finalSubmit.style.display = 'none';
+    answerInput.value = '';
+    interactionArea.style.display = 'block';
+
+    generateMathProblem();
+});
+
         });
-}
+        
+});
 
-// Start everything
+// Start game
 generateMathProblem();

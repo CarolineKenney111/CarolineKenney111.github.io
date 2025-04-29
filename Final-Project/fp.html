@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worst Phone Number Input</title>
+    <link rel="stylesheet" href="fp.css">
+</head>
+<body>
+
+    <!-- EVERYTHING inside here disappears after submission -->
+    <div id="interactionArea">
+        <h1>Please click the numbers to type your phone number.</h1>
+
+        <div id="phoneDisplay"></div>
+
+        <div class="keypad">
+            <button class="key" data-number="1" disabled>1</button>
+            <button class="key" data-number="2" disabled>2</button>
+            <button class="key" data-number="3" disabled>3</button>
+            <button class="key" data-number="4" disabled>4</button>
+            <button class="key" data-number="5" disabled>5</button>
+            <button class="key" data-number="6" disabled>6</button>
+            <button class="key" data-number="7" disabled>7</button>
+            <button class="key" data-number="8" disabled>8</button>
+            <button class="key" data-number="9" disabled>9</button>
+            <button class="key" data-number="0" disabled>0</button>
+        </div>
+
+        <div id="mathProblem"></div>
+
+        <input type="text" id="answerInput" placeholder="Enter your answer">
+        <button id="submitAnswer">Submit</button>
+        <button id="backspaceButton">Delete</button>
+
+        <button id="finalSubmit" style="display:none;">Submit Phone Number</button>
+    </div>
+
+    <!-- This will remain to show the final dog -->
+    <div id="dogPrize"></div>
+
+    <script src="fp.js"></script>
+</body>
+</html>
