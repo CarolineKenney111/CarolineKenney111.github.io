@@ -1,0 +1,106 @@
+/* Theme colors */
+:root {
+    --rx-blue: #0074c1;
+    --rx-blue-light: #e6f2fb;
+    --rx-dark: #003f6b;
+    --rx-gray: #f5f5f5;
+    --rx-text: #1a1a1a;
+    --rx-card-shadow: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Base styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    background: var(--rx-gray);
+    text-align: center;
+    color: var(--rx-text);
+  }
+  
+  h1 {
+    color: var(--rx-dark);
+    margin-bottom: 1rem;
+  }
+  
+  /* Header with logo */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .logo {
+    height: 50px;
+    width: auto;
+  }
+  
+  /* Search bar */
+  input[type="text"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--rx-blue);
+    border-radius: 8px;
+    background: white;
+  }
+  
+  /* Card grid */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  /* Card styling */
+  .card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--rx-text);
+    width: 180px;
+    box-shadow: 0 4px 10px var(--rx-card-shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 116, 193, 0.3);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .info {
+    padding: 0.75rem;
+  }
+  
+  /* Bio page link back */
+  .back-link {
+    display: inline-block;
+    margin: 1rem;
+    color: var(--rx-blue);
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Mobile optimization */
+  @media (max-width: 600px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
